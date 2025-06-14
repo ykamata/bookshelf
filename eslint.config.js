@@ -1,30 +1,10 @@
-import tseslint from '@typescript-eslint/eslint-plugin'
-import tsParser from '@typescript-eslint/parser'
-import vue from 'eslint-plugin-vue'
-import nuxt from 'eslint-plugin-nuxt'
-import eslintConfigPrettier from 'eslint-config-prettier/flat'
+import { createConfigForNuxt } from '@nuxt/eslint-config'
 
-export default [
-  {
-    files: ['**/*.{ts,vue}'],
-    ignores: ['node_modules', '.output', '.nuxt'],
-    languageOptions: {
-      parser: tsParser,
-      parserOptions: {
-        ecmaVersion: 2022,
-        sourceType: 'module',
-      },
-    },
-    plugins: {
-      vue,
-      nuxt,
-      '@typescript-eslint': tseslint,
-    },
-    rules: {
-      ...vue.configs['vue3-recommended'].rules,
-      ...nuxt.configs['flat/recommended'].rules,
-      ...tseslint.configs.recommended.rules,
-    },
+export default createConfigForNuxt({
+  // Provide the project root to ensure all files are linted correctly
+  cwd: new URL('.', import.meta.url).pathname,
+  // Reintroduce Prettier formatting similar to the previous setup
+  features: {
+    formatters: true,
   },
-  eslintConfigPrettier,
-]
+})
