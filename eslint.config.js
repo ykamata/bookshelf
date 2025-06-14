@@ -7,7 +7,7 @@ import prettier from 'eslint-config-prettier'
 export default [
   {
     files: ['**/*.{ts,vue}'],
-    ignores: ['node_modules', '.output'],
+    ignores: ['node_modules', '.output', '.nuxt'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
