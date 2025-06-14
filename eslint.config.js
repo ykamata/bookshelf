@@ -2,7 +2,7 @@ import tseslint from '@typescript-eslint/eslint-plugin'
 import tsParser from '@typescript-eslint/parser'
 import vue from 'eslint-plugin-vue'
 import nuxt from 'eslint-plugin-nuxt'
-import prettier from 'eslint-config-prettier'
+import eslintConfigPrettier from 'eslint-config-prettier/flat'
 
 export default [
   {
@@ -12,19 +12,19 @@ export default [
       parser: tsParser,
       parserOptions: {
         ecmaVersion: 2022,
-        sourceType: 'module'
-      }
+        sourceType: 'module',
+      },
     },
     plugins: {
       vue,
       nuxt,
-      '@typescript-eslint': tseslint
+      '@typescript-eslint': tseslint,
     },
     rules: {
       ...vue.configs['vue3-recommended'].rules,
       ...nuxt.configs['flat/recommended'].rules,
-      ...tseslint.configs.recommended.rules
-    }
+      ...tseslint.configs.recommended.rules,
+    },
   },
-  ...prettier
+  eslintConfigPrettier,
 ]
