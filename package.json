@@ -10,13 +10,19 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@nuxt/eslint": "^1.4.1",
     "nuxt": "^3.11.0"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "latest",
+    "@nuxt/devtools": "^2.5.0",
+    "@nuxt/test-utils": "^3.19.1",
     "@types/node": "^24.0.1",
     "eslint": "^9.0.0",
     "eslint-plugin-format": "^1.0.1",
-    "prettier": "^3.2.5"
+    "jsonc-eslint-parser": "^2.4.0",
+    "prettier": "^3.2.5",
+    "taze": "^19.1.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
   }
 }

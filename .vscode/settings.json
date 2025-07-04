@@ -1,11 +1,13 @@
 {
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
+  "eslint.format.enable": true,
+  "eslint.useFlatConfig": true,
   "cSpell.allowCompoundWords": true,
-  "cSpell.ignoreWords": ["nuxt", "nuxtjs"],
+  "cSpell.ignoreWords": ["nuxt", "nuxtjs", "taze"],
   "cSpell.ignorePaths": [
     "package-lock.json",
     "node_modules",
