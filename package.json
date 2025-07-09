@@ -17,6 +17,7 @@
     "@nuxt/devtools": "^2.5.0",
     "@nuxt/test-utils": "^3.19.1",
     "@types/node": "^24.0.1",
+    "@vue/test-utils": "^2.4.6",
     "eslint": "^9.0.0",
     "eslint-plugin-format": "^1.0.1",
     "jsonc-eslint-parser": "^2.4.0",
