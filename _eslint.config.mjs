@@ -1,4 +1,4 @@
-import { createConfigForNuxt } from '@nuxt/eslint-config'
+import { createConfigForNuxt } from '@nuxt/eslint-config';
 
 export default createConfigForNuxt({
   // Provide the project root to ensure all files are linted correctly
@@ -7,4 +7,4 @@ export default createConfigForNuxt({
   features: {
     formatters: true,
   },
-})
+});
