@@ -1,0 +1,27 @@
+{
+  "name": "Bookshelf DevContainer",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  },
+  "postCreateCommand": "npm install",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Nuxt"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "eslint.experimental.useFlatConfig": true
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "Vue.volar",
+        "Vue.vscode-typescript-vue-plugin"
+      ]
+    }
+  }
+}
