@@ -15,12 +15,15 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "eslint.experimental.useFlatConfig": true
+        "eslint.useFlatConfig": true
       },
       "extensions": [
+        "ms-vscode-remote.remote-containers",
         "dbaeumer.vscode-eslint",
         "Vue.volar",
-        "Vue.vscode-typescript-vue-plugin"
+        "Vue.vscode-typescript-vue-plugin",
+        "bradlc.vscode-tailwindcss",
+        "vitest.explorer"
       ]
     }
   }
