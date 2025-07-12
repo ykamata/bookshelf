@@ -1,11 +1,5 @@
 <script setup lang="ts">
-interface Book {
-  id: number;
-  title: string;
-  author: string;
-  genre: string;
-  cover: string;
-}
+import type { Book } from '~/data/books';
 
 defineProps<{ book: Book }>();
 </script>

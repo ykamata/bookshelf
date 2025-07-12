@@ -1,42 +1,8 @@
 <script setup lang="ts">
-interface Book {
-  id: number;
-  title: string;
-  author: string;
-  genre: string;
-  cover: string;
-}
+import type { Book } from '~/data/books';
+import { sampleBooks } from '~/data/books';
 
-const books = ref<Book[]>([
-  {
-    id: 1,
-    title: '1984',
-    author: 'George Orwell',
-    genre: 'Dystopian',
-    cover: 'https://placehold.co/150x200?text=1984',
-  },
-  {
-    id: 2,
-    title: 'The Great Gatsby',
-    author: 'F. Scott Fitzgerald',
-    genre: 'Classic',
-    cover: 'https://placehold.co/150x200?text=Gatsby',
-  },
-  {
-    id: 3,
-    title: 'Brave New World',
-    author: 'Aldous Huxley',
-    genre: 'Dystopian',
-    cover: 'https://placehold.co/150x200?text=Brave',
-  },
-  {
-    id: 4,
-    title: 'Moby Dick',
-    author: 'Herman Melville',
-    genre: 'Adventure',
-    cover: 'https://placehold.co/150x200?text=Moby',
-  },
-]);
+const books = ref<Book[]>(sampleBooks);
 
 const searchQuery = ref('');
 const selectedGenre = ref('');
@@ -68,49 +34,67 @@ const sortedBooks = computed(() => {
 </script>
 
 <template>
-  <div class="p-8">
-    <h1>Bookshelf</h1>
+  <div
+    class="min-h-screen bg-cover bg-center"
+    style="background-image: url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=1350&q=80')"
+  >
+    <div class="p-8 min-h-screen bg-white/70 bookshelf">
+      <h1>Bookshelf</h1>
 
-    <div class="flex gap-4 mb-4">
-      <input
-        v-model="searchQuery"
-        placeholder="Search by title or author"
-        class="flex-1 p-2"
-      >
-      <select
-        v-model="selectedGenre"
-        class="p-2"
-      >
-        <option value="">
-          All genres
-        </option>
-        <option
-          v-for="genre in genres"
-          :key="genre"
-          :value="genre"
+      <div class="flex gap-4 mb-4">
+        <input
+          v-model="searchQuery"
+          placeholder="Search by title or author"
+          class="flex-1 p-2"
         >
-          {{ genre }}
-        </option>
-      </select>
-      <select
-        v-model="sortKey"
-        class="p-2"
-      >
-        <option value="title">
-          Title
-        </option>
-        <option value="author">
-          Author
-        </option>
-      </select>
-    </div>
+        <select
+          v-model="selectedGenre"
+          class="p-2"
+        >
+          <option value="">
+            All genres
+          </option>
+          <option
+            v-for="genre in genres"
+            :key="genre"
+            :value="genre"
+          >
+            {{ genre }}
+          </option>
+        </select>
+        <select
+          v-model="sortKey"
+          class="p-2"
+        >
+          <option value="title">
+            Title
+          </option>
+          <option value="author">
+            Author
+          </option>
+        </select>
+      </div>
 
-    <div class="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4">
-      <BookCard
-        v-for="book in sortedBooks"
-        :key="book.id"
-        :book="book"
-      />
+      <div class="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4">
+        <BookCard
+          v-for="book in sortedBooks"
+          :key="book.id"
+          :book="book"
+        />
+      </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.bookshelf {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 148px,
+    #d2b48c 148px,
+    #d2b48c 150px
+  );
+  background-size: 100% 150px;
+}
+</style>
