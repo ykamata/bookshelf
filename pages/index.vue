@@ -113,6 +113,7 @@ const sortedBooks = computed(() => {
 
 .book-container {
   perspective: 1000px;
+  margin-bottom: 2rem;
 }
 
 @media (max-width: 768px) {
