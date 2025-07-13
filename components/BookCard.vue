@@ -56,10 +56,12 @@ function colorFromString(str: string) {
   transform: rotateY(-20deg);
   transition: transform 0.3s;
   cursor: pointer;
+  z-index: 1;
 }
 
 .book-card:hover {
-  transform: rotateY(0) scale(1.05);
+  transform: rotateY(0) scale(1.1);
+  z-index: 10;
 }
 
 .book-cover {
@@ -91,12 +93,20 @@ function colorFromString(str: string) {
 
 .book-info {
   position: absolute;
-  bottom: -40px;
-  left: 0;
-  width: 100%;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 200px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
   text-align: center;
   opacity: 0;
   transition: opacity 0.3s;
+  white-space: nowrap;
+  z-index: 20;
 }
 
 .book-card:hover .book-info {

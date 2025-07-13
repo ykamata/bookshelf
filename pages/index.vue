@@ -108,6 +108,7 @@ const sortedBooks = computed(() => {
       var(--shelf-color) var(--shelf-height)
     );
   min-height: calc(var(--shelf-height) * 3);
+  overflow-x: hidden;
 }
 
 .book-container {
