@@ -56,6 +56,7 @@ function colorFromString(str: string) {
   transform: rotateY(-20deg);
   transition: transform 0.3s;
   cursor: pointer;
+  margin-bottom: 2rem;
 }
 
 .book-card:hover {

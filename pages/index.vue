@@ -96,7 +96,7 @@ const sortedBooks = computed(() => {
   flex-wrap: wrap;
   align-content: flex-start;
   padding: 2rem;
-  gap: 2rem;
+  gap: 4rem;
   background:
     repeating-linear-gradient(
       to bottom,
