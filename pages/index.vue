@@ -75,11 +75,13 @@ const sortedBooks = computed(() => {
       </div>
 
       <div class="bookshelf">
-        <BookCard
+        <div
           v-for="book in sortedBooks"
           :key="book.id"
-          :book="book"
-        />
+          class="book-container"
+        >
+          <BookCard :book="book" />
+        </div>
       </div>
     </div>
   </div>
@@ -106,6 +108,10 @@ const sortedBooks = computed(() => {
       var(--shelf-color) var(--shelf-height)
     );
   min-height: calc(var(--shelf-height) * 3);
+}
+
+.book-container {
+  perspective: 1000px;
 }
 
 @media (max-width: 768px) {
