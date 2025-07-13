@@ -94,28 +94,18 @@ const sortedBooks = computed(() => {
 
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-content: flex-start;
   padding: 2rem;
-  gap: 1rem;
+  gap: 2rem;
   background:
-    linear-gradient(
-      to right,
-      var(--shelf-color) 20px,
-      transparent 20px
-    ),
-    linear-gradient(
-      to right,
-      var(--shelf-color) 20px,
-      transparent 20px
-    )
-    left bottom / 100% 20px no-repeat,
     repeating-linear-gradient(
-    to bottom,
-    transparent 0,
-    transparent calc(var(--shelf-height) - 2px),
-    #000 0,
-    #000 var(--shelf-height)
-  );
+      to bottom,
+      transparent 0,
+      transparent calc(var(--shelf-height) - 2px),
+      var(--shelf-color) 0,
+      var(--shelf-color) var(--shelf-height)
+    );
+  min-height: calc(var(--shelf-height) * 3);
 }
 
 @media (max-width: 768px) {
