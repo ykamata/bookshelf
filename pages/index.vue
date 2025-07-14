@@ -94,11 +94,10 @@ const sortedBooks = computed(() => {
   --book-height: 200px;
   --book-width: 150px;
 
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--book-width), 1fr));
+  gap: 2rem;
   padding: 2rem;
-  gap: 4rem;
   background:
     repeating-linear-gradient(
       to bottom,
@@ -108,11 +107,11 @@ const sortedBooks = computed(() => {
       var(--shelf-color) var(--shelf-height)
     );
   min-height: calc(var(--shelf-height) * 3);
-  overflow-x: hidden;
 }
 
 .book-container {
-  perspective: 1000px;
+  width: var(--book-width);
+  height: var(--book-height);
   margin-bottom: 2rem;
 }
 
@@ -121,7 +120,7 @@ const sortedBooks = computed(() => {
     --shelf-height: 200px;
     --book-height: 150px;
     --book-width: 100px;
-    justify-content: center;
+    justify-items: center;
   }
 }
 </style>
