@@ -89,38 +89,56 @@ const sortedBooks = computed(() => {
 
 <style scoped>
 .bookshelf {
-  --shelf-height: 250px;
-  --shelf-color: #d2b48c;
-  --book-height: 200px;
-  --book-width: 150px;
+  --shelf-height: 300px;
+  --shelf-color: #8B4513; /* SaddleBrown */
+  --book-height: 220px;
+  --book-width: 160px;
+  --shelf-thickness: 20px;
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--book-width), 1fr));
-  gap: 2rem;
-  padding: 2rem;
+  gap: 2.5rem;
+  padding: 2rem 4rem;
+  background-color: #deb887; /* BurlyWood */
+  background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+  position: relative;
+}
+
+.bookshelf::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background:
     repeating-linear-gradient(
       to bottom,
       transparent 0,
-      transparent calc(var(--shelf-height) - 2px),
+      transparent calc(var(--shelf-height) - var(--shelf-thickness)),
       var(--shelf-color) 0,
       var(--shelf-color) var(--shelf-height)
     );
-  min-height: calc(var(--shelf-height) * 3);
+  box-shadow:
+    inset 0 10px 10px -10px rgba(0,0,0,0.5),
+    inset 0 -10px 10px -10px rgba(0,0,0,0.5);
+  pointer-events: none;
 }
 
 .book-container {
   width: var(--book-width);
   height: var(--book-height);
-  margin-bottom: 2rem;
+  margin-bottom: calc(var(--shelf-height) - var(--book-height) + var(--shelf-thickness));
+  align-self: end;
+  justify-self: center;
 }
 
 @media (max-width: 768px) {
   .bookshelf {
-    --shelf-height: 200px;
-    --book-height: 150px;
-    --book-width: 100px;
-    justify-items: center;
+    --shelf-height: 250px;
+    --book-height: 180px;
+    --book-width: 120px;
+    padding: 1.5rem 2rem;
   }
 }
 </style>

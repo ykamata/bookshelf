@@ -1,21 +1,38 @@
 <script setup lang="ts">
 import type { Book } from '~/data/books';
+import { onMounted, ref } from 'vue';
 
 defineProps<{ book: Book }>();
+
+const rotation = ref(0);
+
+onMounted(() => {
+  rotation.value = Math.random() * 4 - 2; // -2 to 2 degrees
+});
 </script>
 
 <template>
-  <div class="book-card">
-    <img
-      :src="book.cover"
-      :alt="book.title"
-      class="w-full h-full object-cover"
-    >
+  <div
+    class="book-card"
+    :style="{
+      '--book-color': book.color || '#d2b48c',
+      '--rotation': `${rotation}deg`,
+    }"
+  >
+    <div class="book-cover">
+      <img
+        :src="book.cover"
+        :alt="book.title"
+        class="w-full h-full object-cover"
+      >
+      <div class="book-spine" />
+      <div class="book-footer" />
+    </div>
     <div class="book-info">
-      <h3 class="text-sm font-bold">
+      <h3 class="text-sm font-bold text-white">
         {{ book.title }}
       </h3>
-      <p class="text-xs text-gray-600">
+      <p class="text-xs text-gray-300">
         {{ book.author }}
       </p>
     </div>
@@ -27,37 +44,74 @@ defineProps<{ book: Book }>();
   width: var(--book-width);
   height: var(--book-height);
   position: relative;
-  transition: transform 0.3s, box-shadow 0.3s;
+  perspective: 1000px;
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
   cursor: pointer;
   z-index: 1;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transform-style: preserve-3d;
+  transform: rotateZ(var(--rotation));
 }
 
 .book-card:hover {
-  transform: scale(1.1);
+  transform: translateY(-10px) rotateY(-25deg);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
   z-index: 10;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.book-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  border-radius: 2px 4px 4px 2px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.book-card:hover .book-cover {
+  transform: rotateY(-25deg);
+}
+
+.book-spine {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  background: color-mix(in srgb, var(--book-color) 80%, black);
+  transform: rotateY(-90deg) translateX(-10px);
+  transform-origin: left;
+  border-radius: 2px 0 0 2px;
+}
+
+.book-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: color-mix(in srgb, var(--book-color) 70%, black);
+    transform: rotateX(90deg) translateY(5px);
+    transform-origin: bottom;
 }
 
 .book-info {
   position: absolute;
-  bottom: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: max-content;
-  max-width: 200px;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 0.5rem 1rem;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  padding: 0.5rem;
+  background: rgba(0,0,0,0.6);
   border-radius: 0.25rem;
-  text-align: center;
   opacity: 0;
-  transition: opacity 0.3s;
-  white-space: nowrap;
+  transform: translateY(10px);
+  transition: opacity 0.3s 0.2s, transform 0.3s 0.2s;
   z-index: 20;
 }
 
 .book-card:hover .book-info {
   opacity: 1;
+  transform: translateY(0);
 }
 </style>
