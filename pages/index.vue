@@ -34,22 +34,21 @@ const sortedBooks = computed(() => {
 </script>
 
 <template>
-  <div
-    class="min-h-screen bg-cover bg-center"
-    style="background-image: url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=1350&q=80')"
-  >
-    <div class="p-8 min-h-screen bg-white/70 bookshelf">
-      <h1>Bookshelf</h1>
+  <div class="min-h-screen bg-gray-100">
+    <div class="p-8">
+      <h1 class="text-3xl font-bold text-center mb-8">
+        My Awesome Bookshelf
+      </h1>
 
-      <div class="flex gap-4 mb-4">
+      <div class="flex flex-col md:flex-row gap-4 mb-8">
         <input
           v-model="searchQuery"
           placeholder="Search by title or author"
-          class="flex-1 p-2"
+          class="flex-1 p-2 border rounded"
         >
         <select
           v-model="selectedGenre"
-          class="p-2"
+          class="p-2 border rounded"
         >
           <option value="">
             All genres
@@ -64,23 +63,25 @@ const sortedBooks = computed(() => {
         </select>
         <select
           v-model="sortKey"
-          class="p-2"
+          class="p-2 border rounded"
         >
           <option value="title">
-            Title
+            Sort by Title
           </option>
           <option value="author">
-            Author
+            Sort by Author
           </option>
         </select>
       </div>
 
-      <div class="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4">
-        <BookCard
+      <div class="bookshelf">
+        <div
           v-for="book in sortedBooks"
           :key="book.id"
-          :book="book"
-        />
+          class="book-container"
+        >
+          <BookCard :book="book" />
+        </div>
       </div>
     </div>
   </div>
@@ -88,13 +89,38 @@ const sortedBooks = computed(() => {
 
 <style scoped>
 .bookshelf {
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0,
-    transparent 148px,
-    #d2b48c 148px,
-    #d2b48c 150px
-  );
-  background-size: 100% 150px;
+  --shelf-height: 250px;
+  --shelf-color: #d2b48c;
+  --book-height: 200px;
+  --book-width: 150px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--book-width), 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(var(--shelf-height) - 2px),
+      var(--shelf-color) 0,
+      var(--shelf-color) var(--shelf-height)
+    );
+  min-height: calc(var(--shelf-height) * 3);
+}
+
+.book-container {
+  width: var(--book-width);
+  height: var(--book-height);
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .bookshelf {
+    --shelf-height: 200px;
+    --book-height: 150px;
+    --book-width: 100px;
+    justify-items: center;
+  }
 }
 </style>
