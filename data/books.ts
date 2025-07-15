@@ -4,6 +4,7 @@ export interface Book {
   author: string;
   genre: string;
   cover: string;
+  color?: string;
 }
 
 export const sampleBooks: Book[] = [
@@ -13,6 +14,7 @@ export const sampleBooks: Book[] = [
     author: 'George Orwell',
     genre: 'Dystopian',
     cover: 'https://placehold.co/150x200/FF6347/FFFFFF?text=1984',
+    color: '#FF6347',
   },
   {
     id: 2,
@@ -20,6 +22,7 @@ export const sampleBooks: Book[] = [
     author: 'F. Scott Fitzgerald',
     genre: 'Classic',
     cover: 'https://placehold.co/150x200/4682B4/FFFFFF?text=Gatsby',
+    color: '#4682B4',
   },
   {
     id: 3,
@@ -27,6 +30,7 @@ export const sampleBooks: Book[] = [
     author: 'Aldous Huxley',
     genre: 'Dystopian',
     cover: 'https://placehold.co/150x200/32CD32/FFFFFF?text=Brave',
+    color: '#32CD32',
   },
   {
     id: 4,
@@ -34,6 +38,7 @@ export const sampleBooks: Book[] = [
     author: 'Herman Melville',
     genre: 'Adventure',
     cover: 'https://placehold.co/150x200/FFD700/FFFFFF?text=Moby',
+    color: '#FFD700',
   },
   {
     id: 5,
@@ -41,6 +46,7 @@ export const sampleBooks: Book[] = [
     author: 'Harper Lee',
     genre: 'Classic',
     cover: 'https://placehold.co/150x200/6A5ACD/FFFFFF?text=Mockingbird',
+    color: '#6A5ACD',
   },
   {
     id: 6,
@@ -48,6 +54,7 @@ export const sampleBooks: Book[] = [
     author: 'J.D. Salinger',
     genre: 'Fiction',
     cover: 'https://placehold.co/150x200/FF4500/FFFFFF?text=Catcher',
+    color: '#FF4500',
   },
   {
     id: 7,
@@ -55,6 +62,7 @@ export const sampleBooks: Book[] = [
     author: 'Jane Austen',
     genre: 'Classic',
     cover: 'https://placehold.co/150x200/DA70D6/FFFFFF?text=Pride',
+    color: '#DA70D6',
   },
   {
     id: 8,
@@ -62,6 +70,7 @@ export const sampleBooks: Book[] = [
     author: 'J.R.R. Tolkien',
     genre: 'Fantasy',
     cover: 'https://placehold.co/150x200/20B2AA/FFFFFF?text=Hobbit',
+    color: '#20B2AA',
   },
   {
     id: 9,
@@ -69,6 +78,7 @@ export const sampleBooks: Book[] = [
     author: 'Ray Bradbury',
     genre: 'Dystopian',
     cover: 'https://placehold.co/150x200/B22222/FFFFFF?text=F451',
+    color: '#B22222',
   },
   {
     id: 10,
@@ -76,6 +86,7 @@ export const sampleBooks: Book[] = [
     author: 'Leo Tolstoy',
     genre: 'Historical',
     cover: 'https://placehold.co/150x200/778899/FFFFFF?text=WarPeace',
+    color: '#778899',
   },
   {
     id: 11,
@@ -83,6 +94,7 @@ export const sampleBooks: Book[] = [
     author: 'J.R.R. Tolkien',
     genre: 'Fantasy',
     cover: 'https://placehold.co/150x200/8B4513/FFFFFF?text=LOTR',
+    color: '#8B4513',
   },
   {
     id: 12,
@@ -90,6 +102,7 @@ export const sampleBooks: Book[] = [
     author: 'C.S. Lewis',
     genre: 'Fantasy',
     cover: 'https://placehold.co/150x200/556B2F/FFFFFF?text=Narnia',
+    color: '#556B2F',
   },
   {
     id: 13,
@@ -97,6 +110,7 @@ export const sampleBooks: Book[] = [
     author: 'Lewis Carroll',
     genre: 'Fantasy',
     cover: 'https://placehold.co/150x200/9932CC/FFFFFF?text=Alice',
+    color: '#9932CC',
   },
   {
     id: 14,
@@ -104,6 +118,7 @@ export const sampleBooks: Book[] = [
     author: 'Douglas Adams',
     genre: 'Sci-Fi',
     cover: 'https://placehold.co/150x200/4B0082/FFFFFF?text=Hitchhiker',
+    color: '#4B0082',
   },
   {
     id: 15,
@@ -111,6 +126,7 @@ export const sampleBooks: Book[] = [
     author: 'Andy Weir',
     genre: 'Sci-Fi',
     cover: 'https://placehold.co/150x200/800000/FFFFFF?text=Martian',
+    color: '#800000',
   },
   {
     id: 16,
@@ -118,6 +134,7 @@ export const sampleBooks: Book[] = [
     author: 'Frank Herbert',
     genre: 'Sci-Fi',
     cover: 'https://placehold.co/150x200/BDB76B/FFFFFF?text=Dune',
+    color: '#BDB76B',
   },
   {
     id: 17,
@@ -125,6 +142,7 @@ export const sampleBooks: Book[] = [
     author: 'Isaac Asimov',
     genre: 'Sci-Fi',
     cover: 'https://placehold.co/150x200/008B8B/FFFFFF?text=Foundation',
+    color: '#008B8B',
   },
   {
     id: 18,
@@ -132,6 +150,7 @@ export const sampleBooks: Book[] = [
     author: 'William Gibson',
     genre: 'Sci-Fi',
     cover: 'https://placehold.co/150x200/000080/FFFFFF?text=Neuromancer',
+    color: '#000080',
   },
   {
     id: 19,
@@ -139,6 +158,7 @@ export const sampleBooks: Book[] = [
     author: 'Neal Stephenson',
     genre: 'Sci-Fi',
     cover: 'https://placehold.co/150x200/808080/FFFFFF?text=SnowCrash',
+    color: '#808080',
   },
   {
     id: 20,
@@ -146,6 +166,7 @@ export const sampleBooks: Book[] = [
     author: 'Stephen King',
     genre: 'Horror',
     cover: 'https://placehold.co/150x200/FF0000/FFFFFF?text=TheStand',
+    color: '#FF0000',
   },
   {
     id: 21,
@@ -153,6 +174,7 @@ export const sampleBooks: Book[] = [
     author: 'Stephen King',
     genre: 'Horror',
     cover: 'https://placehold.co/150x200/FF69B4/FFFFFF?text=It',
+    color: '#FF69B4',
   },
   {
     id: 22,
@@ -160,6 +182,7 @@ export const sampleBooks: Book[] = [
     author: 'Stephen King',
     genre: 'Horror',
     cover: 'https://placehold.co/150x200/FFFF00/000000?text=Shining',
+    color: '#FFFF00',
   },
   {
     id: 23,
@@ -167,6 +190,7 @@ export const sampleBooks: Book[] = [
     author: 'Bram Stoker',
     genre: 'Horror',
     cover: 'https://placehold.co/150x200/8A2BE2/FFFFFF?text=Dracula',
+    color: '#8A2BE2',
   },
   {
     id: 24,
@@ -174,6 +198,7 @@ export const sampleBooks: Book[] = [
     author: 'Mary Shelley',
     genre: 'Horror',
     cover: 'https://placehold.co/150x200/7FFF00/000000?text=Frankenstein',
+    color: '#7FFF00',
   },
   {
     id: 25,
@@ -181,6 +206,7 @@ export const sampleBooks: Book[] = [
     author: 'Shirley Jackson',
     genre: 'Horror',
     cover: 'https://placehold.co/150x200/D2691E/FFFFFF?text=HillHouse',
+    color: '#D2691E',
   },
   {
     id: 26,
@@ -188,6 +214,7 @@ export const sampleBooks: Book[] = [
     author: 'Thomas Harris',
     genre: 'Thriller',
     cover: 'https://placehold.co/150x200/DC143C/FFFFFF?text=Lambs',
+    color: '#DC143C',
   },
   {
     id: 27,
@@ -195,6 +222,7 @@ export const sampleBooks: Book[] = [
     author: 'Gillian Flynn',
     genre: 'Thriller',
     cover: 'https://placehold.co/150x200/00FFFF/000000?text=GoneGirl',
+    color: '#00FFFF',
   },
   {
     id: 28,
@@ -202,6 +230,7 @@ export const sampleBooks: Book[] = [
     author: 'Stieg Larsson',
     genre: 'Thriller',
     cover: 'https://placehold.co/150x200/0000FF/FFFFFF?text=DragonTattoo',
+    color: '#0000FF',
   },
   {
     id: 29,
@@ -209,6 +238,7 @@ export const sampleBooks: Book[] = [
     author: 'Dan Brown',
     genre: 'Thriller',
     cover: 'https://placehold.co/150x200/A52A2A/FFFFFF?text=DaVinci',
+    color: '#A52A2A',
   },
   {
     id: 30,
@@ -216,6 +246,7 @@ export const sampleBooks: Book[] = [
     author: 'Suzanne Collins',
     genre: 'YA',
     cover: 'https://placehold.co/150x200/5F9EA0/FFFFFF?text=HungerGames',
+    color: '#5F9EA0',
   },
   {
     id: 31,
@@ -223,6 +254,7 @@ export const sampleBooks: Book[] = [
     author: 'J.K. Rowling',
     genre: 'YA',
     cover: 'https://placehold.co/150x200/D2691E/FFFFFF?text=HarryPotter',
+    color: '#D2691E',
   },
   {
     id: 32,
@@ -230,6 +262,7 @@ export const sampleBooks: Book[] = [
     author: 'John Green',
     genre: 'YA',
     cover: 'https://placehold.co/150x200/FF7F50/FFFFFF?text=FaultInOurStars',
+    color: '#FF7F50',
   },
   {
     id: 33,
@@ -237,6 +270,7 @@ export const sampleBooks: Book[] = [
     author: 'Markus Zusak',
     genre: 'Historical',
     cover: 'https://placehold.co/150x200/6495ED/FFFFFF?text=BookThief',
+    color: '#6495ED',
   },
   {
     id: 34,
@@ -244,6 +278,7 @@ export const sampleBooks: Book[] = [
     author: 'Anthony Doerr',
     genre: 'Historical',
     cover: 'https://placehold.co/150x200/FFF8DC/000000?text=AllTheLight',
+    color: '#FFF8DC',
   },
   {
     id: 35,
@@ -251,6 +286,7 @@ export const sampleBooks: Book[] = [
     author: 'Kathryn Stockett',
     genre: 'Historical',
     cover: 'https://placehold.co/150x200/008B8B/FFFFFF?text=TheHelp',
+    color: '#008B8B',
   },
   {
     id: 36,
@@ -258,6 +294,7 @@ export const sampleBooks: Book[] = [
     author: 'Khaled Hosseini',
     genre: 'Fiction',
     cover: 'https://placehold.co/150x200/B8860B/FFFFFF?text=KiteRunner',
+    color: '#B8860B',
   },
   {
     id: 37,
@@ -265,6 +302,7 @@ export const sampleBooks: Book[] = [
     author: 'Khaled Hosseini',
     genre: 'Fiction',
     cover: 'https://placehold.co/150x200/A9A9A9/FFFFFF?text=SplendidSuns',
+    color: '#A9A9A9',
   },
   {
     id: 38,
@@ -272,6 +310,7 @@ export const sampleBooks: Book[] = [
     author: 'Paulo Coelho',
     genre: 'Fiction',
     cover: 'https://placehold.co/150x200/006400/FFFFFF?text=Alchemist',
+    color: '#006400',
   },
   {
     id: 39,
@@ -279,6 +318,7 @@ export const sampleBooks: Book[] = [
     author: 'Yann Martel',
     genre: 'Fiction',
     cover: 'https://placehold.co/150x200/BDB76B/FFFFFF?text=LifeOfPi',
+    color: '#BDB76B',
   },
   {
     id: 40,
@@ -286,6 +326,7 @@ export const sampleBooks: Book[] = [
     author: 'Cormac McCarthy',
     genre: 'Dystopian',
     cover: 'https://placehold.co/150x200/8B008B/FFFFFF?text=TheRoad',
+    color: '#8B008B',
   },
   {
     id: 41,
@@ -293,6 +334,7 @@ export const sampleBooks: Book[] = [
     author: 'Margaret Atwood',
     genre: 'Dystopian',
     cover: 'https://placehold.co/150x200/556B2F/FFFFFF?text=Handmaid',
+    color: '#556B2F',
   },
   {
     id: 42,
@@ -300,6 +342,7 @@ export const sampleBooks: Book[] = [
     author: 'Lois Lowry',
     genre: 'YA',
     cover: 'https://placehold.co/150x200/FF8C00/FFFFFF?text=Giver',
+    color: '#FF8C00',
   },
   {
     id: 43,
@@ -307,6 +350,7 @@ export const sampleBooks: Book[] = [
     author: 'James Dashner',
     genre: 'YA',
     cover: 'https://placehold.co/150x200/9932CC/FFFFFF?text=MazeRunner',
+    color: '#9932CC',
   },
   {
     id: 44,
@@ -314,6 +358,7 @@ export const sampleBooks: Book[] = [
     author: 'Veronica Roth',
     genre: 'YA',
     cover: 'https://placehold.co/150x200/8B0000/FFFFFF?text=Divergent',
+    color: '#8B0000',
   },
   {
     id: 45,
@@ -321,6 +366,7 @@ export const sampleBooks: Book[] = [
     author: 'Ray Bradbury',
     genre: 'Sci-Fi',
     cover: 'https://placehold.co/150x200/E9967A/FFFFFF?text=MartianChronicles',
+    color: '#E9967A',
   },
   {
     id: 46,
@@ -328,6 +374,7 @@ export const sampleBooks: Book[] = [
     author: 'Isaac Asimov',
     genre: 'Sci-Fi',
     cover: 'https://placehold.co/150x200/8FBC8F/FFFFFF?text=IRobot',
+    color: '#8FBC8F',
   },
   {
     id: 47,
@@ -335,6 +382,7 @@ export const sampleBooks: Book[] = [
     author: 'Philip K. Dick',
     genre: 'Sci-Fi',
     cover: 'https://placehold.co/150x200/483D8B/FFFFFF?text=Androids',
+    color: '#483D8B',
   },
   {
     id: 48,
@@ -342,6 +390,7 @@ export const sampleBooks: Book[] = [
     author: 'Philip K. Dick',
     genre: 'Sci-Fi',
     cover: 'https://placehold.co/150x200/2F4F4F/FFFFFF?text=ScannerDarkly',
+    color: '#2F4F4F',
   },
   {
     id: 49,
@@ -349,6 +398,7 @@ export const sampleBooks: Book[] = [
     author: 'Philip K. Dick',
     genre: 'Sci-Fi',
     cover: 'https://placehold.co/150x200/00CED1/FFFFFF?text=VALIS',
+    color: '#00CED1',
   },
   {
     id: 50,
@@ -356,5 +406,6 @@ export const sampleBooks: Book[] = [
     author: 'Philip K. Dick',
     genre: 'Sci-Fi',
     cover: 'https://placehold.co/150x200/9400D3/FFFFFF?text=Ubik',
+    color: '#9400D3',
   },
 ];
