@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+    command: sleep infinity
+    network_mode: service:db
+    environment:
+      - DB_HOST=localhost
+      - DB_PORT=3306
+      - DB_USER=bookshelf
+      - DB_PASSWORD=bookshelf
+      - DB_NAME=bookshelf
+      - NODE_ENV=development
+
+  db:
+    image: mysql:8.4
+    restart: unless-stopped
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bookshelf
+      MYSQL_USER: bookshelf
+      MYSQL_PASSWORD: bookshelf
+    ports:
+      - "3306:3306"
+
+volumes:
+  mysql-data:
