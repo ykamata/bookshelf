@@ -12,6 +12,7 @@
     "test": "vitest run",
     "db:setup": "tsx database/setup.ts",
     "db:seed": "tsx database/seed.ts",
+    "db:migrate": "tsx database/migrate.ts",
     "db:reset": "npm run db:setup && npm run db:seed"
   },
   "dependencies": {
