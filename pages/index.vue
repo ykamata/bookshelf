@@ -1,20 +1,27 @@
 <script setup lang="ts">
 import type { Book } from '~/data/books';
-import { sampleBooks } from '~/data/books';
 
-const books = ref<Book[]>(sampleBooks);
+// Fetch books from API
+const { data: books, error } = await useFetch<Book[]>('/api/books');
+
+// Fallback to empty array if fetch fails
+if (error.value) {
+  console.error('Failed to load books:', error.value);
+}
+
+const booksRef = ref<Book[]>(books.value || []);
 
 const searchQuery = ref('');
 const selectedGenre = ref('');
 const sortKey = ref<'title' | 'author'>('title');
 
 const genres = computed(() => {
-  const g = books.value.map(b => b.genre);
+  const g = booksRef.value.map(b => b.genre);
   return Array.from(new Set(g));
 });
 
 const filteredBooks = computed(() => {
-  return books.value.filter((book) => {
+  return booksRef.value.filter((book) => {
     const query = searchQuery.value.toLowerCase();
     const matchesSearch
       = book.title.toLowerCase().includes(query)

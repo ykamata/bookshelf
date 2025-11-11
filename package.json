@@ -9,10 +9,15 @@
     "start": "node .output/server/index.mjs",
     "lint": "eslint .",
     "type-check": "nuxi typecheck",
-    "test": "vitest run"
+    "test": "vitest run",
+    "db:setup": "tsx database/setup.ts",
+    "db:seed": "tsx database/seed.ts",
+    "db:reset": "npm run db:setup && npm run db:seed"
   },
   "dependencies": {
     "@nuxt/eslint": "^1.4.1",
+    "@prisma/client": "^6.19.0",
+    "mysql2": "^3.15.3",
     "nuxt": "^3.11.0"
   },
   "devDependencies": {
@@ -26,7 +31,9 @@
     "jsdom": "^26.1.0",
     "jsonc-eslint-parser": "^2.4.0",
     "prettier": "^3.2.5",
+    "prisma": "^6.19.0",
     "taze": "^19.1.0",
+    "tsx": "^4.20.6",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4",
     "vue-tsc": "^3.0.1"
