@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import type { Book } from '~/data/books';
+import type { UpdateBookRequest } from '~/server/api/books/[id].patch';
+
 definePageMeta({
   layout: 'default',
 });
-
-import type { Book } from '~/data/books';
 
 // Fetch books from API
 const { data: books, error } = await useFetch<Book[]>('/api/books');
@@ -18,6 +19,11 @@ const booksRef = ref<Book[]>(books.value || []);
 const searchQuery = ref('');
 const selectedGenre = ref('');
 const sortKey = ref<'title' | 'author'>('title');
+
+// Modal state
+const isModalOpen = ref(false);
+const selectedBook = ref<Book | null>(null);
+const isSaving = ref(false);
 
 const genres = computed(() => {
   const g = booksRef.value.map(b => b.genre);
@@ -42,6 +48,50 @@ const sortedBooks = computed(() => {
     a[sortKey.value].localeCompare(b[sortKey.value]),
   );
 });
+
+const handleBookClick = (book: Book) => {
+  selectedBook.value = book;
+  isModalOpen.value = true;
+};
+
+const handleCloseModal = () => {
+  isModalOpen.value = false;
+  selectedBook.value = null;
+};
+
+const handleSaveBook = async (updatedData: Partial<Book>) => {
+  if (!selectedBook.value) return;
+
+  isSaving.value = true;
+
+  try {
+    const response = await $fetch(`/api/books/${selectedBook.value.id}`, {
+      method: 'PATCH',
+      body: updatedData as UpdateBookRequest,
+    });
+
+    if (response.success) {
+      // Update local book data
+      const index = booksRef.value.findIndex(b => b.id === selectedBook.value!.id);
+      if (index !== -1) {
+        booksRef.value[index] = {
+          ...booksRef.value[index],
+          ...updatedData,
+        };
+      }
+
+      // Close modal
+      handleCloseModal();
+    }
+  }
+  catch (err) {
+    console.error('Failed to update book:', err);
+    alert('Failed to update book. Please try again.');
+  }
+  finally {
+    isSaving.value = false;
+  }
+};
 </script>
 
 <template>
@@ -91,10 +141,21 @@ const sortedBooks = computed(() => {
           :key="book.id"
           class="book-container"
         >
-          <BookCard :book="book" />
+          <BookCard
+            :book="book"
+            @click="handleBookClick(book)"
+          />
         </div>
       </div>
     </div>
+
+    <!-- Edit Modal -->
+    <BookEditModal
+      :book="selectedBook"
+      :is-open="isModalOpen"
+      @close="handleCloseModal"
+      @save="handleSaveBook"
+    />
   </div>
 </template>
 
