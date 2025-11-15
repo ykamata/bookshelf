@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: 'default',
+});
+
 import type { Book } from '~/data/books';
 
 // Fetch books from API
@@ -41,7 +45,7 @@ const sortedBooks = computed(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-100">
+  <div class="bg-gray-100 min-h-screen">
     <div class="p-8">
       <h1 class="text-3xl font-bold text-center mb-8">
         My Awesome Bookshelf
