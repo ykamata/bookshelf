@@ -13,7 +13,11 @@
     "db:setup": "tsx database/setup.ts",
     "db:seed": "tsx database/seed.ts",
     "db:migrate": "tsx database/migrate.ts",
-    "db:reset": "npm run db:setup && npm run db:seed"
+    "db:reset": "npm run db:setup && npm run db:seed",
+    "mcp:install": "cd mcp-server && npm install",
+    "mcp:build": "cd mcp-server && npm run build",
+    "mcp:dev": "cd mcp-server && npm run dev",
+    "mcp:setup": "npm run mcp:install && npm run mcp:build"
   },
   "dependencies": {
     "@nuxt/eslint": "^1.4.1",
