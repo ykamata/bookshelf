@@ -54,6 +54,15 @@ export default defineEventHandler(async (event) => {
   for (let i = 0; i < body.books.length; i++) {
     const bookData = body.books[i];
 
+    if (!bookData) {
+      errors.push({
+        index: i,
+        error: 'Invalid book data',
+        book: { title: '', author: '', genre: '' },
+      });
+      continue;
+    }
+
     // Validate required fields
     if (!bookData.title || !bookData.author || !bookData.genre) {
       errors.push({
@@ -81,7 +90,9 @@ export default defineEventHandler(async (event) => {
         [insertId]
       );
 
-      created.push(newBook);
+      if (newBook) {
+        created.push(newBook);
+      }
     } catch (error) {
       console.error(`Failed to create book at index ${i}:`, error);
       errors.push({
@@ -104,8 +115,8 @@ function getRandomColor(): string {
     '#FF6347', '#4682B4', '#32CD32', '#FFD700', '#6A5ACD',
     '#FF4500', '#DA70D6', '#20B2AA', '#B22222', '#778899',
     '#8B4513', '#556B2F', '#9932CC', '#4B0082', '#800000',
-  ];
-  return colors[Math.floor(Math.random() * colors.length)];
+  ] as const;
+  return colors[Math.floor(Math.random() * colors.length)] ?? '#FF6347';
 }
 
 function generateDefaultCover(title: string, color: string): string {

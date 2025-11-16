@@ -20,14 +20,14 @@
     "mcp:setup": "npm run mcp:install && npm run mcp:build"
   },
   "dependencies": {
-    "@nuxt/eslint": "^1.4.1",
+    "@nuxt/eslint": "^1.9.0",
     "@prisma/client": "^6.19.0",
     "mysql2": "^3.15.3",
-    "nuxt": "^3.11.0"
+    "nuxt": "^4.0.0"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^2.5.0",
-    "@nuxt/test-utils": "^3.19.1",
+    "@nuxt/devtools": "^2.6.0",
+    "@nuxt/test-utils": "^3.20.0",
     "@types/node": "^24.0.1",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue/test-utils": "^2.4.6",

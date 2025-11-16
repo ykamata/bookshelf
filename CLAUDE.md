@@ -2,7 +2,7 @@
 
 ## プロジェクト概要
 
-このbookshelfリポジトリは、**Nuxt 3で構築されたフルスタック本棚管理Webアプリケーション**です。3D CSS transformsを使用したリアルな本棚インターフェースを特徴とし、モダンなVue 3のComposition APIとTypeScriptで開発されています。MySQL データベースによるデータ永続化、新刊情報クローラー、ユーザー設定管理などの高度な機能を備えています。
+このbookshelfリポジトリは、**Nuxt 4で構築されたフルスタック本棚管理Webアプリケーション**です。3D CSS transformsを使用したリアルな本棚インターフェースを特徴とし、モダンなVue 3のComposition APIとTypeScriptで開発されています。MySQL データベースによるデータ永続化、新刊情報クローラー、ユーザー設定管理などの高度な機能を備えています。
 
 ## ディレクトリ構造
 
@@ -10,57 +10,58 @@
 bookshelf/
 ├── .devcontainer/              # DevContainer設定（Node 20）
 ├── .vscode/                    # VS Code設定と推奨拡張機能
-├── components/                 # Vueコンポーネント
-│   ├── BookCard.vue           # 個別の本カードコンポーネント（3D表示）
-│   └── BookEditModal.vue      # 本の編集モーダルコンポーネント
-├── data/                      # 静的データ（サンプルデータ）
-│   └── books.ts               # Book型定義とサンプルデータ（50冊）
-├── database/                  # データベース関連スクリプト
-│   ├── schema.sql             # 基本スキーマ定義
-│   ├── setup.ts               # データベース初期化スクリプト
-│   ├── seed.ts                # サンプルデータ投入
-│   ├── migrate.ts             # マイグレーション実行
-│   └── migrations/            # SQLマイグレーションファイル
+├── app/                        # Nuxt 4 アプリケーションディレクトリ
+│   ├── components/             # Vueコンポーネント
+│   │   ├── BookCard.vue        # 個別の本カードコンポーネント（3D表示）
+│   │   └── BookEditModal.vue   # 本の編集モーダルコンポーネント
+│   ├── layouts/                # アプリケーションレイアウト
+│   │   └── default.vue         # デフォルトナビゲーションレイアウト
+│   ├── pages/                  # ファイルベースルーティング
+│   │   ├── index.vue           # メイン本棚ページ（書籍一覧・検索・編集）
+│   │   ├── new-releases.vue    # 新刊情報一覧ページ
+│   │   ├── preferences.vue     # ユーザー設定ページ
+│   │   ├── publishers.vue      # 出版社管理ページ
+│   │   └── crawler.vue         # クローラー管理ページ
+│   └── app.vue                 # ルートアプリケーションコンポーネント
+├── data/                       # 静的データ（サンプルデータ）
+│   └── books.ts                # Book型定義とサンプルデータ（50冊）
+├── database/                   # データベース関連スクリプト
+│   ├── schema.sql              # 基本スキーマ定義
+│   ├── setup.ts                # データベース初期化スクリプト
+│   ├── seed.ts                 # サンプルデータ投入
+│   ├── migrate.ts              # マイグレーション実行
+│   └── migrations/             # SQLマイグレーションファイル
 │       └── 001_add_new_release_tracking.sql
-├── layouts/                   # アプリケーションレイアウト
-│   └── default.vue            # デフォルトナビゲーションレイアウト
-├── pages/                     # ファイルベースルーティング
-│   ├── index.vue              # メイン本棚ページ（書籍一覧・検索・編集）
-│   ├── new-releases.vue       # 新刊情報一覧ページ
-│   ├── preferences.vue        # ユーザー設定ページ
-│   ├── publishers.vue         # 出版社管理ページ
-│   └── crawler.vue            # クローラー管理ページ
-├── prisma/                    # Prisma ORM設定
-│   └── schema.prisma          # データベーススキーマ定義
-├── server/                    # Nuxt Server API
-│   ├── api/                   # RESTful APIエンドポイント
-│   │   ├── books.get.ts       # 全書籍取得
+├── prisma/                     # Prisma ORM設定
+│   └── schema.prisma           # データベーススキーマ定義
+├── server/                     # Nuxt Server API
+│   ├── api/                    # RESTful APIエンドポイント
+│   │   ├── books.get.ts        # 全書籍取得
 │   │   ├── books/[id].patch.ts # 書籍更新
-│   │   ├── preferences/       # ユーザー設定CRUD
-│   │   ├── publishers/        # 出版社CRUD
-│   │   ├── new-releases/      # 新刊情報取得・更新
-│   │   └── crawler/           # クローラー管理API
-│   ├── plugins/               # サーバープラグイン
-│   │   └── scheduler.ts       # スケジューラー初期化
-│   ├── types/                 # サーバー側型定義
-│   │   └── index.ts           # ドメインモデル・リクエスト型
-│   └── utils/                 # サーバーユーティリティ
-│       ├── db.ts              # MySQLコネクションプール
-│       ├── crawler.ts         # クローラー実装
-│       └── scheduler.ts       # 定期実行スケジューラー
-├── tests/                     # テストファイル
-│   ├── components/            # コンポーネントテスト
+│   │   ├── preferences/        # ユーザー設定CRUD
+│   │   ├── publishers/         # 出版社CRUD
+│   │   ├── new-releases/       # 新刊情報取得・更新
+│   │   └── crawler/            # クローラー管理API
+│   ├── plugins/                # サーバープラグイン
+│   │   └── scheduler.ts        # スケジューラー初期化
+│   ├── types/                  # サーバー側型定義
+│   │   └── index.ts            # ドメインモデル・リクエスト型
+│   └── utils/                  # サーバーユーティリティ
+│       ├── db.ts               # MySQLコネクションプール
+│       ├── crawler.ts          # クローラー実装
+│       └── scheduler.ts        # 定期実行スケジューラー
+├── tests/                      # テストファイル
+│   ├── components/             # コンポーネントテスト
 │   │   └── BookCard.spec.ts
-│   └── data.spec.ts           # データ検証テスト
-├── app.vue                    # ルートアプリケーションコンポーネント
-├── nuxt.config.ts             # Nuxt設定
-├── tsconfig.json              # TypeScript設定
-├── vitest.config.ts           # テストフレームワーク設定
-├── eslint.config.mjs          # Linting設定
-├── package.json               # 依存関係とスクリプト
-├── AGENTS.md                  # AIエージェント開発ガイドライン
-├── NEW_RELEASE_CRAWLER.md     # クローラー機能ドキュメント
-└── README.md                  # プロジェクトドキュメント
+│   └── data.spec.ts            # データ検証テスト
+├── nuxt.config.ts              # Nuxt設定
+├── tsconfig.json               # TypeScript設定
+├── vitest.config.ts            # テストフレームワーク設定
+├── eslint.config.mjs           # Linting設定
+├── package.json                # 依存関係とスクリプト
+├── AGENTS.md                   # AIエージェント開発ガイドライン
+├── NEW_RELEASE_CRAWLER.md      # クローラー機能ドキュメント
+└── README.md                   # プロジェクトドキュメント
 ```
 
 ## アプリケーション種別
@@ -74,7 +75,7 @@ bookshelf/
 ## 技術スタック
 
 ### コアフレームワーク & 言語
-- **Nuxt 3** (v^3.11.0) - Vue.jsメタフレームワーク（SSR/SSG対応）
+- **Nuxt 4** (v^4.0.0) - Vue.jsメタフレームワーク（SSR/SSG対応）
 - **Vue 3** - プログレッシブJavaScriptフレームワーク（Composition API使用）
 - **TypeScript** (v^5.8.3) - strict mode有効
 
@@ -94,7 +95,7 @@ bookshelf/
 - **TypeScript** - strict mode（`@types/node`使用）
 - **Vitest** (v^3.2.4) - ユニットテストフレームワーク
 - **@vue/test-utils** (v^2.4.6) - Vueコンポーネントテストユーティリティ
-- **@nuxt/test-utils** (v^3.19.1) - Nuxt テストユーティリティ
+- **@nuxt/test-utils** (v^3.20.0) - Nuxt テストユーティリティ
 - **jsdom** (v^26.1.0) - テスト用DOM実装
 
 ### ビルド & 開発ツール
@@ -418,6 +419,16 @@ npm run start
 - **イベントエミット型付け** - `defineEmits<Emits>()`パターン使用
 - **ウォッチャー** - リアクティブなデータ同期
 - **ライフサイクルフック** - `onMounted`、`onUnmounted`の適切な使用
+
+### Nuxt 4固有のパターン
+- **app/ディレクトリ構造** - アプリケーションコードを`app/`ディレクトリに分離（Nuxt 4の新デフォルト）
+- **パスエイリアス** - `~`は`app/`を指し、`~~`はプロジェクトルートを指す
+  - `~/components` → `app/components`
+  - `~~/data` → プロジェクトルートの`data/`
+  - `~~/server` → プロジェクトルートの`server/`
+- **compatibilityVersion: 4** - `nuxt.config.ts`の`future`ブロックで設定
+- **noUncheckedIndexedAccess** - TypeScriptの厳格な配列アクセスチェック（デフォルト有効）
+- **serverDir** - `server/`はプロジェクトルートに配置（`app/`の外）
 
 ### フルスタックアーキテクチャ
 - **Nuxt Server Routes** - `/server/api/`ディレクトリによるAPIエンドポイント自動生成

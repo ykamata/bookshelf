@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Book } from '~/data/books';
-import type { UpdateBookRequest } from '~/server/api/books/[id].patch';
+import type { Book } from '~~/data/books';
+import type { UpdateBookRequest } from '~~/server/api/books/[id].patch';
 
 definePageMeta({
   layout: 'default',
@@ -73,11 +73,12 @@ const handleSaveBook = async (updatedData: Partial<Book>) => {
     if (response.success) {
       // Update local book data
       const index = booksRef.value.findIndex(b => b.id === selectedBook.value!.id);
-      if (index !== -1) {
+      const existingBook = booksRef.value[index];
+      if (index !== -1 && existingBook) {
         booksRef.value[index] = {
-          ...booksRef.value[index],
+          ...existingBook,
           ...updatedData,
-        };
+        } as Book;
       }
 
       // Close modal
