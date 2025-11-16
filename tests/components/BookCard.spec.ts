@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
-import BookCard from '../../components/BookCard.vue';
+import BookCard from '../../app/components/BookCard.vue';
 import type { Book } from '../../data/books';
 
 const book: Book = {

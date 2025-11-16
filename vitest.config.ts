@@ -14,6 +14,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '~': root,
+      '#app': `${root}/app`,
     },
   },
 });

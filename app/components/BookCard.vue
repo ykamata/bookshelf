@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Book } from '~/data/books';
+import type { Book } from '~~/data/books';
 import { onMounted, ref } from 'vue';
 
 defineProps<{ book: Book }>();

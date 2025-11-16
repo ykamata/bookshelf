@@ -1,6 +1,9 @@
 import { defineNuxtConfig } from 'nuxt/config';
 
 export default defineNuxtConfig({
+  future: {
+    compatibilityVersion: 4,
+  },
   modules: ['@nuxt/eslint'],
   devtools: { enabled: true },
   typescript: {

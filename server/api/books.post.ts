@@ -61,8 +61,8 @@ function getRandomColor(): string {
     '#FF6347', '#4682B4', '#32CD32', '#FFD700', '#6A5ACD',
     '#FF4500', '#DA70D6', '#20B2AA', '#B22222', '#778899',
     '#8B4513', '#556B2F', '#9932CC', '#4B0082', '#800000',
-  ];
-  return colors[Math.floor(Math.random() * colors.length)];
+  ] as const;
+  return colors[Math.floor(Math.random() * colors.length)] ?? '#FF6347';
 }
 
 function generateDefaultCover(title: string, color: string): string {

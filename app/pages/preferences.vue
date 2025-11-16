@@ -112,8 +112,9 @@ const groupedPreferences = computed(() => {
   };
 
   preferences.value.forEach((pref) => {
-    if (groups[pref.preferenceType]) {
-      groups[pref.preferenceType].push(pref);
+    const group = groups[pref.preferenceType];
+    if (group) {
+      group.push(pref);
     }
   });
 
